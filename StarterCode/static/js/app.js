@@ -1,15 +1,29 @@
 // Starter code provided: uses D3 library to read n the samples.json data, which was also provided.
-d3.json('samples.json').then(data => {
-    console.log(data);
-})
+// d3.json('samples.json').then(data => {
+//     console.log(data);
+// })
 
-// Create dropdown list for ID of person/participant
-d3.json("samples.json").then(function(data){
-    var name_list = data.names;
-    // check your work
-    // console.log(name_list);
+// Copy what was provided above and create dropdown list for ID of person/participant
+function selectedID(){
+    d3.json("samples.json").then(function(data){
+        var name_list = data.names;
+        // check your work
+        // console.log(name_list);
 
-})
+    d3.selectAll("#selDataset")
+    // ID from row 25 in html
+    .selectAll("option")
+    .data(name_list)
+    .enter()
+    .append("option")
+    .attr("value",function(name) {
+        return name;
+    })
+    .text(function(name){
+        return name;
+    });
+});
+
 
 // Create a horizontal bar chart.
 // 1. Will need a trace to create the plot. Additionally, cut to top 10.
