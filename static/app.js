@@ -38,7 +38,7 @@ function UpdateCharts(selected_id){
 // Identity data for each plot
 d3.json("sample.json").then(function(data){
     var samples_data = data.samples;
-    // var demo_data = data.metadata;
+    var demo_data = data.metadata;
 
 // Before creating the charts, get the demographic info.
 demo_info.forEach(function(row){
@@ -102,3 +102,29 @@ var bar_layout = {
 };
 // 4. Plot the chart to a div tag
 Plotly.newPlot("bar", bar_data, bar_layout);
+
+// Create bubble chart
+ // 1. Will need a trace
+ var trace2 = {
+     x: otu_ids,
+     y:samp_vals,
+     type: 'scatter',
+     text: otu_labels,
+     mode: 'markers',
+     marker: {size: samp_vals, color: otu_ids},
+     tranforms: [{type:'sort', target:'y', order:'descending'}],
+ };
+
+ //2. Create the array for the plot
+ var bubble_chart = [trace2];
+ 
+ //3. Define layout
+ var bubble_layout = {
+     yaxis: { autorange: true,},
+     xaxis: {title: `OTU ID`, autorange: true,},
+     
+ },
+};
+
+// 4. Plot the chart to a div tag
+Plotly.newPlot("bubble", bubble_chart, bubble_layout);
