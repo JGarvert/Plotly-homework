@@ -65,16 +65,17 @@ samples_data.forEach(function(row){
       var samp_vals = row.sample_values;
       // console.log(selected_id);
 
-// Create a horizontal bar chart.  Start by identifying data source.
-d3.json("samples.json").then(function(data){
-    var samples_data = data.samples;
-    //check it out
-    // console.log(samples.data);
+// // Create a horizontal bar chart.  Start by identifying data source.
+// d3.json("samples.json").then(function(data){
+//     var samples_data = data.samples;
+//     //check it out
+//     // console.log(samples.data);
 
 // 1. Will need a trace to create the plot. Additionally, cut to top 10.
 var trace1 = {
-    x: ,
-    y: ,
+    x: samp_vals,
+    // is this where the homework is requesting hover information?
+    y: otu_ids,
     type: "bar",
     orientation: "h",
     mode: 'markers',
@@ -88,6 +89,8 @@ var trace1 = {
 };
 // 2. Create the array for the plot
 var bar_data = [trace1];
+// check your work!
+// console.log(bar_data)
 
 // 3. Define horizontal plot layout
 var bar_layout = {
