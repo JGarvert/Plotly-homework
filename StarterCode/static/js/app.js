@@ -1,7 +1,7 @@
 // Starter code provided: uses D3 library to read n the samples.json data, which was also provided.
-// d3.json('samples.json').then(data => {
-//     console.log(data);
-// })
+d3.json('samples.json').then(data => {
+    console.log(data);
+})
 
 // Copy what was provided above and create dropdown list for ID of person/participant
 function selectedID(){
@@ -24,17 +24,23 @@ function selectedID(){
     });
 });
 
-// Keep selected person ID to use in later coding.
+// Keep selected person ID to use later.
 var selected_id =  d3.select("#selDataset").node().value;
 
-//at some point the charts will need to be updated with the selected id.
+// At some point the charts will need to be updated based on the selection
+// UpdateCharts(selectedID);
+
+// Identity data for each plot
+d3.json("sample.json").then(function(data){
+    var samples_data = data.samples;
+})
+
+\
 
 // Before creating the charts, get the demographic info.
 demo_info.forEach(function(row){
     if (row.id === parseInt(selected_id)) {
       d3.select("#sample-metadata").html("");
-      // console.log(row.id);
-
       var test_person = Object.entries(row)
       // console.log(test_person);
       
