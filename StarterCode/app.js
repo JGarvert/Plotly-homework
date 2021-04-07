@@ -38,7 +38,7 @@ function UpdateCharts(selected_id){
 // Identity data for each plot
 d3.json("sample.json").then(function(data){
     var samples_data = data.samples;
-    var demo_data = data.metadata;
+    // var demo_data = data.metadata;
 
 // Before creating the charts, get the demographic info.
 demo_info.forEach(function(row){
