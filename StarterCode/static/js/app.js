@@ -5,13 +5,13 @@ d3.json('samples.json').then(data => {
 
 // Copy what was provided above and create dropdown list for ID of person/participant
 function selectedID(){
-    d3.json("samples.json").then(function(data){
+d3.json("samples.json").then(function(data){
         var name_list = data.names;
         // check your work
         // console.log(name_list);
 
+       // ID from row 25 in html
     d3.selectAll("#selDataset")
-    // ID from row 25 in html
     .selectAll("option")
     .data(name_list)
     .enter()
@@ -29,7 +29,7 @@ var selected_id =  d3.select("#selDataset").node().value;
 
 // Start the process for updating the charts based on the selection.
 
-UpdateCharts(selectedID);
+UpdateCharts(selected_ID);
 
 // Create a function to update charts
 function UpdateCharts(selected_id){
