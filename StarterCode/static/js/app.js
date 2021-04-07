@@ -27,15 +27,17 @@ function selectedID(){
 // Keep selected person ID to use later.
 var selected_id =  d3.select("#selDataset").node().value;
 
-// At some point the charts will need to be updated based on the selection
-// UpdateCharts(selectedID);
+// Start the process for updating the charts based on the selection.
+
+UpdateCharts(selectedID);
+
+// Create a function to update charts
+function UpdateCharts(selected_id){
 
 // Identity data for each plot
 d3.json("sample.json").then(function(data){
     var samples_data = data.samples;
 })
-
-\
 
 // Before creating the charts, get the demographic info.
 demo_info.forEach(function(row){
@@ -53,7 +55,15 @@ demo_info.forEach(function(row){
     }
   });
 
+// Per the instructions, we will need otu_ids, otu_labels, and samp_vals for the selected ID
 
+samples_data.forEach(function(row){
+    if (row.id === selected_id) {
+
+      var otu_ids = row.otu_ids;
+      var otu_labels = row.otu_labels;
+      var samp_vals = row.sample_values;
+      // console.log(selected_id);
 
 // Create a horizontal bar chart.  Start by identifying data source.
 d3.json("samples.json").then(function(data){
