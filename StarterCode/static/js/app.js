@@ -3,6 +3,14 @@ d3.json('samples.json').then(data => {
     console.log(data);
 })
 
+// Create dropdown list for ID of person/participant
+d3.json("samples.json").then(function(data){
+    var name_list = data.names;
+    // check your work
+    // console.log(name_list);
+
+})
+
 // Create a horizontal bar chart.
 // 1. Will need a trace to create the plot. Additionally, cut to top 10.
 var trace1 = {
@@ -10,7 +18,9 @@ var trace1 = {
     y: ,
     type: "bar",
     orientation: "h",
-    text: otu_labels,
+    mode: 'markers',
+    marker: {size:10},
+    // text: otu_labels,
     transforms: [{
         type: 'sort',
         target: 'y',
