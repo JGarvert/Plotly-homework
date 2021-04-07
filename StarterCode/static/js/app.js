@@ -24,6 +24,11 @@ function selectedID(){
     });
 });
 
+// Keep selected person ID to use in later coding.
+var selected_id =  d3.select("#selDataset").node().value;
+
+//at some point the charts will need to be updated with the selected id.
+
 
 // Create a horizontal bar chart.
 // 1. Will need a trace to create the plot. Additionally, cut to top 10.
