@@ -29,8 +29,32 @@ var selected_id =  d3.select("#selDataset").node().value;
 
 //at some point the charts will need to be updated with the selected id.
 
+// Before creating the charts, get the demographic info.
+demo_info.forEach(function(row){
+    if (row.id === parseInt(selected_id)) {
+      d3.select("#sample-metadata").html("");
+      // console.log(row.id);
 
-// Create a horizontal bar chart.
+      var test_person = Object.entries(row)
+      // console.log(test_person);
+      
+      test_person.forEach((info) => {
+        d3.selectAll("#sample-metadata")
+        .append("div")
+        .data(info)
+        .text(`${info[0]}: ${info[1]}`)
+      });
+    }
+  });
+
+
+
+// Create a horizontal bar chart.  Start by identifying data source.
+d3.json("samples.json").then(function(data){
+    var samples_data = data.samples;
+    //check it out
+    // console.log(samples.data);
+
 // 1. Will need a trace to create the plot. Additionally, cut to top 10.
 var trace1 = {
     x: ,
