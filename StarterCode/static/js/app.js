@@ -1,11 +1,11 @@
 // Starter code provided: uses D3 library to read n the samples.json data, which was also provided.
-d3.json('samples.json').then(data => {
-    console.log(data);
-})
+// d3.json('samples.json').then(data => {
+//     console.log(data);
+// })
 
-// Copy what was provided above and create dropdown list for ID of person/participant
+// Copy what was provided above and create dropdown list for sID of person/participant
 function selectedID(){
-d3.json("samples.json").then(function(data){
+    d3.json("samples.json").then(function(data){
         var name_list = data.names;
         // check your work
         // console.log(name_list);
@@ -24,12 +24,13 @@ d3.json("samples.json").then(function(data){
     });
 });
 
-// Keep selected person ID to use later.
+// Keep selected person ID to use later. See 15.02.07
 var selected_id =  d3.select("#selDataset").node().value;
 
 // Start the process for updating the charts based on the selection.
-
 UpdateCharts(selected_ID);
+}
+selectedID();
 
 // Create a function to update charts
 function UpdateCharts(selected_id){
@@ -37,7 +38,7 @@ function UpdateCharts(selected_id){
 // Identity data for each plot
 d3.json("sample.json").then(function(data){
     var samples_data = data.samples;
-})
+    var demo_data = data.metadata;
 
 // Before creating the charts, get the demographic info.
 demo_info.forEach(function(row){
@@ -73,14 +74,15 @@ samples_data.forEach(function(row){
 
 // 1. Will need a trace to create the plot. Additionally, cut to top 10.
 var trace1 = {
-    x: samp_vals,
+    x: samp_vals.slice(0,10),
     // is this where the homework is requesting hover information?
-    y: otu_ids,
+    y: otu_ids.map(id => String(`OTU ${id}`)),
+    // test: otu_labels,
     type: "bar",
     orientation: "h",
     mode: 'markers',
     marker: {size:10},
-    // text: otu_labels,
+    text: otu_labels,
     transforms: [{
         type: 'sort',
         target: 'y',
@@ -99,4 +101,4 @@ var bar_layout = {
     yaxis: { title: "OTU ID"}
 };
 // 4. Plot the chart to a div tag
-Plotly.newPlot("bar-plot", bar_data, bar_layout);
+Plotly.newPlot("bar", bar_data, bar_layout);
