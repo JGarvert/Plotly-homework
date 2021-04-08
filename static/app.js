@@ -41,20 +41,20 @@ d3.json("sample.json").then(function(data){
     var demo_data = data.metadata;
 
 // Before creating the charts, get the demographic info.
-demo_data.forEach(function(row){
-    if (row.id === parseInt(selected_id)) {
-      d3.select("#sample-metadata").html("");
-      var test_person = Object.entries(row)
-      // console.log(test_person);
+    demo_data.forEach(function(row){
+        if (row.id === parseInt(selected_id)) {
+        d3.select("#sample-metadata").html("");
+        var test_person = Object.entries(row)
+        // console.log(test_person);
       
-      test_person.forEach((info) => {
-        d3.selectAll("#sample-metadata")
-        .append("div")
-        .data(info)
-        .text(`${info[0]}: ${info[1]}`)
-      });
-    }
-  });
+        test_person.forEach((info) => {
+         d3.selectAll("#sample-metadata")
+            .append("div")
+            .data(info)
+         .text(`${info[0]}: ${info[1]}`)
+        });
+        }
+    });
 
 // Per the instructions, we will need otu_ids, otu_labels, and samp_vals for the selected ID
 
@@ -77,17 +77,16 @@ var trace1 = {
     x: samp_vals.slice(0,10),
     // is this where the homework is requesting hover information?
     y: otu_ids.map(id => String(`OTU ${id}`)),
-    // test: otu_labels,
     type: "bar",
     orientation: "h",
     mode: 'markers',
-    marker: {size:10},
+    marker: {size:8},
     text: otu_labels,
     transforms: [{
         type: 'sort',
         target: 'y',
         order: 'descending'
-    }]
+    }],
 };
 // 2. Create the array for the plot
 var bar_data = [trace1];
