@@ -4,7 +4,7 @@
 // })
 
 // Copy what was provided above and create dropdown list for sID of person/participant
-function selectedID(){
+function optionChanged(){
     d3.json("samples.json").then(function(data){
         var name_list = data.names;
         // check your work
@@ -30,7 +30,7 @@ var selected_id =  d3.select("#selDataset").node().value;
 // Start the process for updating the charts based on the selection.
 UpdateCharts(selected_ID);
 }
-selectedID();
+optionChanged();
 
 // Create a function to update charts
 function UpdateCharts(selected_id){
@@ -41,7 +41,7 @@ d3.json("sample.json").then(function(data){
     var demo_data = data.metadata;
 
 // Before creating the charts, get the demographic info.
-demo_info.forEach(function(row){
+demo_data.forEach(function(row){
     if (row.id === parseInt(selected_id)) {
       d3.select("#sample-metadata").html("");
       var test_person = Object.entries(row)
