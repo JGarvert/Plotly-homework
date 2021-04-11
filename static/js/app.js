@@ -1,4 +1,4 @@
-// Copy what was provided above and create dropdown list for sID of person/participant
+// Copy what was provided above and create dropdown list for IDs of person/participant
 function initializedDropdown(){
     d3.json("samples.json").then(function(data){
         var name_list = data.names;
@@ -20,22 +20,22 @@ function initializedDropdown(){
 });
 }
 
-// // Keep selected person ID to use later. See 15.02.07
-// var selected_id =  d3.select("#selDataset").node().value;
+// End creation of initializedDropdown function
 
-// // Start the process for updating the charts based on the selection.
-// optionChanged(selected_id);
+// Start the process for updating the charts based on the selection.
+
 initializedDropdown();
 
 // Create a function to update charts
+// optionChanged from select ID in row 25 of html
 function optionChanged(selected_id){
 
-    // Identity data for each plot
+    // Identify data for each plot
     d3.json("samples.json").then(function(data){
         var samples_data = data.samples;
         var demo_data = data.metadata;
 
-    // Before creating the charts, get the demographic info.
+    // Get the info. sample-metadata from row 31 of html.
         demo_data.forEach(function(row){
             if (row.id === parseInt(selected_id)) {
             d3.select("#sample-metadata").html("");
@@ -64,7 +64,6 @@ function optionChanged(selected_id){
     // 1. Will need a trace to create the plot. Additionally, cut to top 10.
     var trace1 = {
         x: samp_vals.slice(0,10),
-        // is this where the homework is requesting hover information?
         y: otu_ids.map(id => String(`OTU ${id}`)),
         type: "bar",
         orientation: "h",
@@ -84,15 +83,15 @@ function optionChanged(selected_id){
 
     // 3. Define horizontal plot layout
     var bar_layout = {
-        title: "Top 10 OTUs found in selected individual",
+        title: `Top 10 OTUs found in #${selected_id}`,
         xaxis: { title: "Number of occurances"},
         yaxis: { title: "OTU ID"}
     };
-    // 4. Plot the chart to a div tag
+    // 4. Plot the chart
     Plotly.newPlot("bar", bar_data, bar_layout);
 
     // Create bubble chart
-    // 1. Will need a trace
+    // 1. Will need another trace
     var trace2 = {
         x: otu_ids,
         y:samp_vals,
