@@ -1,3 +1,5 @@
+Note to graders: the set-up of the github page was reviewed by the TA and seems correct, but the link it not rendering to the expected page. Hopefully it self corrects tomorrow. (e.g before you grade this assignment.)
+
 # Plotly-homework
 Unit 15 homework on Plotly using belly button biodiversity data
 
