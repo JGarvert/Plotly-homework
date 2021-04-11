@@ -23,6 +23,8 @@ Use the D3 library to read in `samples.json`. Create a horizontal bar chart with
 * Container #2: bar chart with `sample_values` as the values, `otu_ids` as the labels, `otu_labels`.  This should be sorted and limited to the top 10 OTUs of the selected ID.
 * Container #3: bubble chart with `otu_ids` for the x values, `sample_values` for the y values, `sample_values` for the marker size, `otu_ids` for the marker colors, and `otu_labels` for the text values.
 
+*THis is additional text to figure out why the github page isn't working.
+
 ## Step 2: Bonus - guage chart of washing frequency.
 This was not attempted. 
 
